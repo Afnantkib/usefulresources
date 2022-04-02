@@ -1,35 +1,21 @@
-function uploadNotepad(){
-        let file = window.event.target.files[0]; 
-        let reader = new FileReader();
-        reader.addEventListener("load", function(){
-            let data = window.event.target.result;
-            let resource = JSON.parse(data);
-
-            let spanBold = divAppMenuBar.querySelector("[action=bold]");
-            let spanItalic = divAppMenuBar.querySelector("[action=italic]");
-            let spanUnderline = divAppMenuBar.querySelector("[action=underline]");
-            let inputBGColor = divAppMenuBar.querySelector("[action=bg-color]");
-            let inputTextColor = divAppMenuBar.querySelector("[action=fg-color]");
-            let selectFontFamily = divAppMenuBar.querySelector("[action=font-family]");
-            let selectFontSize = divAppMenuBar.querySelector("[action=font-size]");
-            let textArea = divAppBody.querySelector("textArea");
-
-            spanBold.setAttribute("pressed", !resource.isBold);
-            spanItalic.setAttribute("pressed", !resource.isItalic);
-            spanUnderline.setAttribute("pressed", !resource.isUnderline);
-            inputBGColor.value = resource.bgColor;
-            inputTextColor.value = resource.textColor;
-            selectFontFamily.value = resource.fontFamily;
-            selectFontSize.value = resource.fontSize;
-            textArea.value = resource.content;
-
-            spanBold.dispatchEvent(new Event("click"));
-            spanItalic.dispatchEvent(new Event("click"));
-            spanUnderline.dispatchEvent(new Event("click"));
-            inputBGColor.dispatchEvent(new Event("change"));
-            inputTextColor.dispatchEvent(new Event("change"));
-            selectFontFamily.dispatchEvent(new Event("change"));
-            selectFontSize.dispatchEvent(new Event("change"));
-        })
-        reader.readAsText(file);       
+(function(){
+    
+    function onChange(event) {
+        var reader = new FileReader();
+        reader.onload = onReaderLoad;
+        reader.readAsText(event.target.files[0]);
     }
+
+    function onReaderLoad(event){
+        console.log(event.target.result);
+        var obj = JSON.parse(event.target.result);
+        alert_data(obj.name, obj.family);
+    }
+    
+    function alert_data(name, family){
+        alert('Name : ' + name + ', Family : ' + family);
+    }
+ 
+    document.getElementById('file').addEventListener('change', onChange);
+
+}());
