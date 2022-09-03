@@ -1,0 +1,1 @@
+int[] primitive = list.stream().mapToInt(Integer::intValue).toArray();
