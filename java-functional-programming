@@ -1,0 +1,47 @@
+// looping over list and printing
+list.stream().forEach(element -> System.out.println(element));
+
+
+// looping over list and printing with condition 
+list.stream().filter(element -> element % 2 == 0).forEach(element -> System.out.println(element));
+
+--> intermediate operation = filter
+--> terminal opertaion = foreach
+
+
+// looping over list and find sum (or reduce all the elements to 1 element =>> sum)
+int sum = list.stream().reduce(0, (num1, num2) -> num1 + num2);
+
+--> reduce = terminal operation
+
+
+// sort and print
+list.stream().sorted().foreach(ele -> System.out.println(ele));
+
+// distinct elements of lisrt
+list.stream().distinct().foreach(ele -> System.out.println(ele));
+
+
+//dictinct + sorted
+list.stream().distinct().sorted().foreach(ele -> System.out.println(ele));
+
+
+// map an element to any other (or square)
+list.stream().map(ele -> ele * ele).foreach(ele -> System.out.println(ele));
+
+// print in range
+[a, b)
+IntStream().range(1, 11).forEach(ele -> System.out.println(ele));
+
+// string to lowercase
+
+list.stream().map(str -> str.toLowerCase()).forEach(ele -> System.out.println(ele));
+
+// length of all strs in list
+list.stream().map(str -> str.length()).forEach(ele -> System.out.println(ele));
+
+
+
+
+
+
