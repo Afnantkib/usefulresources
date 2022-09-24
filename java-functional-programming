@@ -31,7 +31,7 @@ list.stream().map(ele -> ele * ele).foreach(ele -> System.out.println(ele));
 
 // print in range
 [a, b)
-IntStream().range(1, 11).forEach(ele -> System.out.println(ele));
+IntStream.range(1, 11).forEach(ele -> System.out.println(ele));
 
 // string to lowercase
 
